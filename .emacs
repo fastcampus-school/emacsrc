@@ -28,19 +28,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default bold shadow italic underline bold bold-italic bold])
- '(ansi-color-names-vector
-   (vector "#c5c8c6" "#cc6666" "#b5bd68" "#f0c674" "#81a2be" "#b294bb" "#8abeb7" "#1d1f21"))
  '(custom-enabled-themes (quote (wombat)))
  '(custom-safe-themes
    (quote
     ("38e64ea9b3a5e512ae9547063ee491c20bd717fe59d9c12219a0b1050b439cdd" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "5ee12d8250b0952deefc88814cf0672327d7ee70b16344372db9460e9a0e3ffc" "cedc5fdf7b619be44d0bd5d0943822930645ed561aa2548f1578dc0992e99569" "1157a4055504672be1df1232bed784ba575c60ab44d8e6c7b3800ae76b42f8bd" default)))
  '(display-time-mode t)
- '(fci-rule-color "#282a2e")
  '(package-selected-packages
    (quote
-    (markdown-mode+ markdown-preview-eww flycheck flycheck-pyflakes markdown-preview-mode markdown-mode pacmacs cyberpunk-theme moe-theme focus ## origami ensime ein undo-tree multiple-cursors jsx-mode skewer-mode simple-httpd bongo pyenv-mode-auto pyenv-mode)))
+    (react-snippets lorem-ipsum rjsx-mode markdown-mode+ markdown-preview-eww flycheck flycheck-pyflakes markdown-preview-mode markdown-mode pacmacs cyberpunk-theme moe-theme focus ## origami ensime ein undo-tree multiple-cursors jsx-mode skewer-mode simple-httpd bongo pyenv-mode-auto pyenv-mode)))
  '(shell-pop-default-directory "/User/Sol")
  '(shell-pop-full-span t)
  '(shell-pop-term-shell "/bin/zsh")
@@ -53,6 +48,8 @@
  ;; If there is more than one, they won't work right.
  )
 
+;;theme set up
+(load-theme 'material t)
 
 ;; default font setting
 (set-default-font "Monoid 9")
@@ -74,6 +71,14 @@
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-cb" 'org-iswitchb)
 
+
+;; indent 4 spaces
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq indent-line-function 'insert-tab)
+
+
+
 ;;ORG-TODO
 (setq org-todo-keywords
       '((sequence "TODO" "DOING" "TIME OFF" "REPETITION" "|" "DONE")
@@ -82,8 +87,6 @@
 (setq org-default-notes-file (concat "~/.emacs.d/org/org-mode/lisp/" "notes.org"))
 (define-key global-map "\C-cc" 'org-capture)
 
-;;cyberpuck-theme
-(load-theme 'cyberpunk t)
 
 ;;ac-html
 (defun setup-ac-for-haml ()
@@ -110,6 +113,10 @@
 (require 'shell-pop)
 
 
+;; Setup react-snippets
+(require 'react-snippets)
+
+
 ;; virtualenvwrapper
 (require 'virtualenvwrapper)
 (venv-initialize-interactive-shells) ;; if you want interactive shell support
@@ -127,17 +134,11 @@
 (setq jedi:complete-on-dot t)
 
 ;;js -> jsx-mode
-(add-to-list 'auto-mode-alist '("\\.js\\'" . jsx-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
 ;;for JSX
-(add-to-list 'auto-mode-alist '("\\.jsx?\\'" . js2-jsx-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx?\\'" . rjsx-mode))
 
 
-
-;; Custom-Themes 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(add-to-list 'load-path "~/.emacs.d/themes")
-(require 'tomorrow-night-bright-theme)
-(setq sml/theme 'light)
 
 ;; add libs to our path
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/column-marker"))
@@ -159,8 +160,8 @@
 ;; line-num mode setting
 (defun sol-linum-mode ()
   (linum-mode)
-  (setq linum-format "%d - ")
-  (set-face-foreground 'linum "yellow")
+  (setq linum-format "%d -")
+  (set-face-foreground 'linum "white")
   )
 ;; python
 (add-hook 'python-mode-hook 'sol-linum-mode)
@@ -186,3 +187,9 @@
 (setq tramp-default-method "ssh")
 
 
+;;origami mode
+(global-set-key (kbd "C-{") 'origami-close-node);
+(global-set-key (kbd "C-}") 'origami-open-node);
+
+
+(global-origami-mode 1);

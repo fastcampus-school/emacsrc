@@ -28,19 +28,48 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (wombat)))
+ '(ansi-color-faces-vector
+   [default bold shadow italic underline bold bold-italic bold])
+ '(ansi-color-names-vector
+   (vector "#424242" "#d54e53" "#b9ca4a" "#e7c547" "#7aa6da" "#c397d8" "#70c0b1" "#eaeaea"))
+ '(beacon-color "#d54e53")
+ '(custom-enabled-themes nil)
  '(custom-safe-themes
    (quote
-    ("38e64ea9b3a5e512ae9547063ee491c20bd717fe59d9c12219a0b1050b439cdd" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "5ee12d8250b0952deefc88814cf0672327d7ee70b16344372db9460e9a0e3ffc" "cedc5fdf7b619be44d0bd5d0943822930645ed561aa2548f1578dc0992e99569" "1157a4055504672be1df1232bed784ba575c60ab44d8e6c7b3800ae76b42f8bd" default)))
+    ("1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "38e64ea9b3a5e512ae9547063ee491c20bd717fe59d9c12219a0b1050b439cdd" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "5ee12d8250b0952deefc88814cf0672327d7ee70b16344372db9460e9a0e3ffc" "cedc5fdf7b619be44d0bd5d0943822930645ed561aa2548f1578dc0992e99569" "1157a4055504672be1df1232bed784ba575c60ab44d8e6c7b3800ae76b42f8bd" default)))
  '(display-time-mode t)
+ '(fci-rule-color "#424242")
+ '(flycheck-color-mode-line-face-to-color (quote mode-line-buffer-id))
  '(package-selected-packages
    (quote
-    (react-snippets lorem-ipsum rjsx-mode markdown-mode+ markdown-preview-eww flycheck flycheck-pyflakes markdown-preview-mode markdown-mode pacmacs cyberpunk-theme moe-theme focus ## origami ensime ein undo-tree multiple-cursors jsx-mode skewer-mode simple-httpd bongo pyenv-mode-auto pyenv-mode)))
+    (color-theme-sanityinc-tomorrow dracula-theme react-snippets lorem-ipsum rjsx-mode markdown-mode+ markdown-preview-eww flycheck flycheck-pyflakes markdown-preview-mode markdown-mode pacmacs cyberpunk-theme moe-theme focus ## origami ensime ein undo-tree multiple-cursors jsx-mode skewer-mode simple-httpd bongo pyenv-mode-auto pyenv-mode)))
  '(shell-pop-default-directory "/User/Sol")
  '(shell-pop-full-span t)
  '(shell-pop-term-shell "/bin/zsh")
  '(shell-pop-universal-key "C-t")
- '(shell-pop-window-position "bottom"))
+ '(shell-pop-window-position "bottom")
+ '(vc-annotate-background nil)
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#d54e53")
+     (40 . "#e78c45")
+     (60 . "#e7c547")
+     (80 . "#b9ca4a")
+     (100 . "#70c0b1")
+     (120 . "#7aa6da")
+     (140 . "#c397d8")
+     (160 . "#d54e53")
+     (180 . "#e78c45")
+     (200 . "#e7c547")
+     (220 . "#b9ca4a")
+     (240 . "#70c0b1")
+     (260 . "#7aa6da")
+     (280 . "#c397d8")
+     (300 . "#d54e53")
+     (320 . "#e78c45")
+     (340 . "#e7c547")
+     (360 . "#b9ca4a"))))
+ '(vc-annotate-very-old-color nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -49,7 +78,7 @@
  )
 
 ;;theme set up
-(load-theme 'material t)
+(load-theme 'dracula t)
 
 ;; default font setting
 (set-default-font "Monoid 9")
@@ -150,7 +179,7 @@
 (add-to-list 'load-path "~/.emacs.d/neotree/emacs-neotree")
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
-(neotree-toggle)
+;;(neotree-toggle)
 
 ;;python syntax checker
 (add-hook 'after-init-hook #'global-flycheck-mode)
